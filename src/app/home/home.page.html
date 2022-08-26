@@ -1,20 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar></ion-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true" scroll-y="false">
+  <ion-header collapse="fade">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <h1>{{ title }}</h1>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" [ngClass]="winner ? 'dim' : ''">
+    <div class="space"></div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="bb br" (click)="tap(1)">
+          <img *ngIf="tae[1]" [src]="'assets/' + tae[1] + '.png'" alt="" />
+        </ion-col>
+        <ion-col class="bb br" (click)="tap(2)">
+          <img *ngIf="tae[2]" [src]="'assets/' + tae[2] + '.png'" alt="" />
+        </ion-col>
+        <ion-col class="bb" (click)="tap(3)">
+          <img *ngIf="tae[3]" [src]="'assets/' + tae[3] + '.png'" alt="" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="bb br" (click)="tap(4)">
+          <img *ngIf="tae[4]" [src]="'assets/' + tae[4] + '.png'" alt="" />
+        </ion-col>
+        <ion-col class="bb br" (click)="tap(5)">
+          <img *ngIf="tae[5]" [src]="'assets/' + tae[5] + '.png'" alt="" />
+        </ion-col>
+        <ion-col class="bb" (click)="tap(6)">
+          <img *ngIf="tae[6]" [src]="'assets/' + tae[6] + '.png'" alt="" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="br" (click)="tap(7)">
+          <img *ngIf="tae[7]" [src]="'assets/' + tae[7] + '.png'" alt="" />
+        </ion-col>
+        <ion-col class="br" (click)="tap(8)">
+          <img *ngIf="tae[8]" [src]="'assets/' + tae[8] + '.png'" alt="" />
+        </ion-col>
+        <ion-col (click)="tap(9)">
+          <img *ngIf="tae[9]" [src]="'assets/' + tae[9] + '.png'" alt="" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button *ngIf="winner" (click)="reset()">Play Again</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
